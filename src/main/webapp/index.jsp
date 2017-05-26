@@ -1,5 +1,4 @@
-<html>
-<body>
-<h2>Hello World!</h2>
-</body>
-</html>
+<form action="auth" method="POST">
+<input type="text" name="user"/>
+<input type="submit" name="submit"/>
+</form>
