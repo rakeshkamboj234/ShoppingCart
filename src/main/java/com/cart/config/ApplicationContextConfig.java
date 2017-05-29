@@ -39,6 +39,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import com.cart.dao.impl.AccountDAOImpl;
+import com.cart.dao.impl.ProductDAOImpl;
 import com.cart.dao.*;
 @Configuration
 
@@ -90,6 +91,12 @@ public class ApplicationContextConfig {
 	    @Bean(name="accountDAOImpl")
 	    public AccountDAO getAccountDAO(){
 	    	return new AccountDAOImpl();
+	    }
+	    
+	    @Autowired(required=true)
+	    @Bean(name="producttDAOImpl")
+	    public ProductDAO getProductDAO(){
+	    	return new ProductDAOImpl();
 	    }
 	    
 	    @Autowired
