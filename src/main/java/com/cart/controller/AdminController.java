@@ -1,9 +1,6 @@
 package com.cart.controller;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
-import antlr.collections.List;
 
 import com.cart.dao.AccountDAO;
 import com.cart.dao.ProductDAO;
@@ -17,6 +14,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
@@ -40,14 +38,15 @@ public class AdminController {
 			System.out.println("Account= " + account);
 			return account;
 		}
-	   	
+		@RequestMapping(value = { "/loginUser" },method=RequestMethod.GET,produces="application/json")
+		public Account login(@RequestParam(value="userName",defaultValue="") String userName,@RequestParam(value="userPassword",defaultValue="") String userPassword){
+			Account account = accountDAOImpl.loginUser(userName,userPassword);
+			System.out.println("Account= " + account);
+			return account;
+		}
 	    @RequestMapping(value = { "/productList" },method=RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
-	    public Map productList(Model model) {	 
-	    	Map listItems = productDAOImpl.findProductList();
-	    	/*ProductInfo product = new ProductInfo();
-	    	product.setCode("123");
-	    	product.setName("Rakesh");*/
-			
+	    public Map<?, ?> productList(Model model) {	 
+	    	Map<?, ?> listItems = productDAOImpl.findProductList();
 			return listItems;
 	    }	
 		

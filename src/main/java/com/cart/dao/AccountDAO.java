@@ -10,4 +10,6 @@ import com.cart.entity.Account;
 
  public interface AccountDAO{
 	public Account findAccount(String userName);
+
+	public Account loginUser(String userName, String userPassword);
 }

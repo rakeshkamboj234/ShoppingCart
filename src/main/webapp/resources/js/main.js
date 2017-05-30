@@ -9,25 +9,23 @@ app.config(['$routeProvider', function ($routeProvider) {
 	}).when('/checkout',{
 		templateUrl : "resources/template/checkout.jsp",
 		cotroller:"productCtrl"
+	}).when('/login',{
+		templateUrl : "resources/template/login.jsp",
+		cotroller:"loginCtrl"
 	});
 }]);
-app.factory('mainService', function ($http) {	
-	var fac={};
-	fac.getData= function() {		
-		return $http({
-		        method : "GET",
-		        url : "productList",
-		});	    
-	};	
-	return fac;
-});	
-app.controller('productCtrl',function($scope,$http,mainService){
 	
-	$scope.productList = function(){
-		$scope.products = mainService.getData().then(function(data) {
-			 $scope.products =  data.data.listItem;
-	    });
-		console.log($scope.products);
-	}
-	
+app.constant('AUTH_EVENTS', {
+	  loginSuccess: 'auth-login-success',
+	  loginFailed: 'auth-login-failed',
+	  logoutSuccess: 'auth-logout-success',
+	  sessionTimeout: 'auth-session-timeout',
+	  notAuthenticated: 'auth-not-authenticated',
+	  notAuthorized: 'auth-not-authorized'
+});
+app.constant('USER_ROLES', {
+	  all: '*',
+	  admin: 'admin',
+	  editor: 'editor',
+	  guest: 'guest'
 });

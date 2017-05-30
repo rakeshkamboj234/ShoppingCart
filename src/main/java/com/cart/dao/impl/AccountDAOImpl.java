@@ -21,4 +21,12 @@ public class AccountDAOImpl implements AccountDAO{
 		criteria.add(Restrictions.eq("userName", userName));
 		return (Account)criteria.uniqueResult();	
 	}
+
+	public Account loginUser(String userName, String userPassword) {
+		Session session=sessionFactory.getCurrentSession();
+		Criteria criteria=session.createCriteria(Account.class);
+		criteria.add(Restrictions.eq("userName", userName));
+		criteria.add(Restrictions.eq("password", userPassword));
+		return (Account)criteria.uniqueResult();
+	}
 }
