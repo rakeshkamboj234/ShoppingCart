@@ -13,6 +13,16 @@ public class Account implements Serializable {
  
     private static final long serialVersionUID = -2054386655979281969L;
 	private String userName;
+	private String fullName;
+	@Column(name = "FULL_NAME", length = 20, nullable = false)
+	public String getFullName() {
+		return fullName;
+	}
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+
 	private String password;
 	private boolean active;
 	private String userRole;

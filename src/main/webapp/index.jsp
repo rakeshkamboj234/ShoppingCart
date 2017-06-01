@@ -16,6 +16,7 @@
 			<a href="#categories">Categories</a>&nbsp&nbsp&nbsp&nbsp
 			<a href="#checkout">Checkout</a>
 			<a href="#login">Login</a>
+			
 			<p>Welcome to Shopping Cart.</p>
 		</h1>
 		<div ng-view></div>
