@@ -14,6 +14,15 @@ app.config(['$routeProvider', function ($routeProvider) {
 		cotroller:"loginCtrl"
 	});
 }]);
+app.run(function($rootScope,$location) {
+	$rootScope.users =  {};
+	 $rootScope.$on('$locationChangeStart', function (event, next, current) {
+         // redirect to login page if not logged in
+         if ($location.path() !== '/login' && !$rootScope.globals.currentUser) {
+             $location.path('/login');
+         }
+     });
+});
 	
 app.constant('AUTH_EVENTS', {
 	  loginSuccess: 'auth-login-success',

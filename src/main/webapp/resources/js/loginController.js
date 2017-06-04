@@ -1,18 +1,15 @@
-app.controller('loginCtrl',function($scope,mainService,Session){
-	 $scope.credentials = {
-			    username: '',
-			    password: ''
-			  };
+app.controller('loginCtrl',function($scope,$rootScope,mainService,Session){
+
 	$scope.loginUser = function(credentials){
-		$scope.userDetails = mainService.loginUser(credentials.username,credentials.password).then(function(data) {
-			 $scope.users =  data.data;
+	    mainService.loginUser(credentials.username,credentials.password).then(function(data) {
+	    	$rootScope.users =  data.data;
 			 Session.create(data.data.userName, data.data.fullName,data.data.userRole);
 	    });
 		console.log($scope.users);
 	}
 	$scope.logOut = function(credentials){
 			
-				 $scope.users =  null;
+		$rootScope.users =  {};
 				 Session.destroy();
 	}
 });
