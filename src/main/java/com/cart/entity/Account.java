@@ -14,6 +14,11 @@ public class Account implements Serializable {
     private static final long serialVersionUID = -2054386655979281969L;
 	private String userName;
 	private String fullName;
+	private String password;
+	private boolean active;
+	private String userRole;
+
+	
 	@Column(name = "FULL_NAME", length = 20, nullable = false)
 	public String getFullName() {
 		return fullName;
@@ -23,9 +28,6 @@ public class Account implements Serializable {
 		this.fullName = fullName;
 	}
 
-	private String password;
-	private boolean active;
-	private String userRole;
 
 	@Id
 	@Column(name = "USER_NAME", length = 20, nullable = false)

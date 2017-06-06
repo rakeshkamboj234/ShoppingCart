@@ -39,6 +39,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import com.cart.dao.impl.AccountDAOImpl;
+import com.cart.dao.impl.CategoryDAOImpl;
 import com.cart.dao.impl.ProductDAOImpl;
 import com.cart.dao.*;
 @Configuration
@@ -87,18 +88,22 @@ public class ApplicationContextConfig {
 	    	
 	    	return sessionFactory;
 	    }
-	    @Autowired(required=true)
+	   /* @Autowired(required=true)
 	    @Bean(name="accountDAOImpl")
 	    public AccountDAO getAccountDAO(){
 	    	return new AccountDAOImpl();
-	    }
+	    }*/
 	    
 	    @Autowired(required=true)
 	    @Bean(name="producttDAOImpl")
 	    public ProductDAO getProductDAO(){
 	    	return new ProductDAOImpl();
 	    }
-	    
+	   /* @Autowired(required=true)
+	    @Bean(name="categoryDAOImpl")
+	    public CategoryDAO getCategoryDAO(){
+	    	return new CategoryDAOImpl();
+	    }*/
 	    @Autowired
 	    @Bean(name = "transactionManager")
 	    public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory) {

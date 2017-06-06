@@ -3,6 +3,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.cart.dao.AccountDAO;
+import com.cart.dao.CategoryDAO;
 import com.cart.dao.ProductDAO;
 import com.cart.dao.impl.*;
 
@@ -26,13 +27,16 @@ import com.cart.model.ProductInfo;
 @RestController
 
 public class AdminController {
-	@Autowired
-    private AccountDAO accountDAOImpl;
+	/*@Autowired
+    private AccountDAO accountDAOImpl;*/
 	
 	@Autowired
-    private ProductDAO productDAOImpl;
+     ProductDAO productDAOImpl;
 	
-		@RequestMapping(value = { "/auth" },method=RequestMethod.GET,produces="application/json")
+	/*@Autowired
+     CategoryDAO categoryDAOImpl;*/
+	
+	/*	@RequestMapping(value = { "/auth" },method=RequestMethod.GET,produces="application/json")
 		public Account check(){
 			Account account = accountDAOImpl.findAccount("employee1");
 			System.out.println("Account= " + account);
@@ -43,11 +47,15 @@ public class AdminController {
 			Account account = accountDAOImpl.loginUser(userName,userPassword);
 			System.out.println("Account= " + account);
 			return account;
-		}
+		}*/
 	    @RequestMapping(value = { "/productList" },method=RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
 	    public Map<?, ?> productList(Model model) {	 
 	    	Map<?, ?> listItems = productDAOImpl.findProductList();
 			return listItems;
 	    }	
-		
+	  /*  @RequestMapping(value = { "/categoryList" },method=RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+	    public Map<?, ?> catgoryList(Model model) {	 
+	    	Map<?, ?> listItems = categoryDAOImpl.findCategoryList();
+			return listItems;
+	    }*/	
 }

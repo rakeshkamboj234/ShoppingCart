@@ -19,7 +19,7 @@ import com.cart.dao.ProductDAO;
 @Transactional
 public class ProductDAOImpl implements ProductDAO {
 	@Autowired
-	private SessionFactory sessionFactory;
+	SessionFactory sessionFactory;
 	HashMap<String,List<ProductInfo>> items=new HashMap<String,List<ProductInfo>>();
 	
 	public Map findProductList() {
